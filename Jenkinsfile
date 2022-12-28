@@ -6,7 +6,7 @@ pipeline {
        //sonarqubescanner 'SonarQubeScanner'
       }
       environment {     
-              DOCKERHUB_CREDENTIALS= credentials('docker-hub') 
+              //DOCKERHUB_CREDENTIALS= credentials('docker-hub') 
               AWS_ACCOUNT_ID="948406862378"
               AWS_DEFAULT_REGION="us-west-1"
               IMAGE_REPO_NAME="spring-boot-app"
@@ -102,7 +102,7 @@ pipeline {
 			     }
 		     }
 	     }  	  
-        stage('Login to Docker Hub') { 
+       /* stage('Login to Docker Hub') { 
            agent {
               label 'Docker Server'
               }
@@ -121,7 +121,7 @@ pipeline {
                      echo 'Push Image Completed'
                      //}  
                   }
-             }
+             }*/
              stage('deploying image to k8s') {
                 agent {
                     label 'Docker Server'
@@ -129,7 +129,7 @@ pipeline {
                 steps{
                     sh '''
                     aws eks --region us-west-1 update-kubeconfig --name eks-cluster
-                    kubectl apply -f mavenwebappdeployment.yaml -n sample-ns
+                    kubectl apply -f springBootMongo.yml
                     '''
                 }
             }
