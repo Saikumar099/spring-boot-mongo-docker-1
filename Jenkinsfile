@@ -59,7 +59,7 @@ pipeline {
               steps{
                    nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-mongo', 
                    classifier: '', 
-                   file: 'target/spring-boot-mongo.war', 
+                   file: 'target/spring-boot-mongo-1.0.war', 
                    type: 'war']], 
                    credentialsId: 'nexus', 
                    groupId: 'com.mt', 
