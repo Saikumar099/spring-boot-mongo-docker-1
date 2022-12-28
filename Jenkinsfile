@@ -57,12 +57,17 @@ pipeline {
                     label 'node-1'
               }
               steps{
-                   nexusArtifactUploader credentialsId: 'nexus', 
+                   nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-mongo', 
+                   classifier: '', 
+                   file: 'spring-boot-mongo.war', 
+                   type: 'war']], 
+                   credentialsId: 'nexus', 
                    groupId: 'com.mt', 
                    nexusUrl: '13.57.214.44:8081', 
-                   nexusVersion: 'nexus3', protocol: 'http', 
+                   nexusVersion: 'nexus3', 
+                   protocol: 'http', 
                    repository: 'spring-app', 
-                   version: '1,0'
+                   version: '1.0'
                } 
            }
            stage('creating tomcat image with webapp') {
