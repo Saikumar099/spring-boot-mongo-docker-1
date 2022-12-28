@@ -45,14 +45,14 @@ pipeline {
                          // sh '''$scannerHome/bin/sonar-scanner 
                         //-Dsonar.host.url=http://54.193.191.66:9000 
                         //-Dproject.settings=sonar-project.properties
-                        //-Dsonar.projectKey=project-demo 
-                        //-Dsonar.projectName=project-demo 
+                        //-Dsonar.projectKey=spring-app 
+                        //-Dsonar.projectName=spring-app 
                         //-Dsonar.java.binaries=target/classes'''
-                       sh 'mvn clean install sonar:sonar -Dsonar.host.url=http://13.57.214.44:9000 -Dproject.settings=sonar-project.properties -Dsonar.projectKey=spring-app -Dsonar.projectName=spring-app'
+                       sh 'mvn -e clean install sonar:sonar -Dsonar.host.url=http://13.57.214.44:9000 -Dproject.settings=sonar-project.properties -Dsonar.projectKey=spring-app -Dsonar.projectName=spring-app'
+                    }
                 }
-             }
-           }
-          stage('upload artifacts to nexus') {
+            }
+            stage('upload artifacts to nexus') {
                agent {
                     label 'node-1'
               }
@@ -124,7 +124,7 @@ pipeline {
              }*/
              stage('deploying image to k8s') {
                 agent {
-                    label 'Docker Server'
+                    label 'node-1'
                 }
                 steps{
                     sh '''
