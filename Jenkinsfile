@@ -31,7 +31,7 @@ pipeline {
                      sh 'mvn package'
                 }
            }
-          /* stage('sonarqube report') {
+           stage('sonarqube report') {
                agent {
                     label 'node-1'
                }
@@ -48,23 +48,22 @@ pipeline {
                         //-Dsonar.projectKey=spring-app 
                         //-Dsonar.projectName=spring-app 
                         //-Dsonar.java.binaries=target/classes'''
-                       sh 'mvn -X clean install sonar:sonar -Dsonar.host.url=http://13.57.214.44:9000 -Dproject.settings=sonar-project.properties -Dsonar.projectKey=spring-app -Dsonar.projectName=spring-app'
+                       sh 'mvn -X clean install sonar:sonar -Dsonar.host.url=http://13.57.214.44:9000 -Dproject.settings=sonar-project.properties -Dsonar.projectKey=spring-app -Dsonar.projectName=spring-app || true'
                     }
                 }
-            } */
+            }
             stage('upload artifacts to nexus') {
                agent {
                     label 'node-1'
               }
               steps{
-                   unstash 'source'
                    nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-mongo', 
                                        classifier: '', 
                                        file: 'target/spring-boot-mongo.war', 
                                        type: 'war']], 
                                        credentialsId: 'nexus', 
                                        groupId: 'com.mt', 
-                                       nexusUrl: 'http://13.57.214.44:8081/', 
+                                       nexusUrl: '13.57.214.44:8081/', 
                                        nexusVersion: 'nexus3', 
                                        protocol: 'http', 
                                        repository: 'spring-app', 
