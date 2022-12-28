@@ -40,7 +40,7 @@ pipeline {
                }
                steps{
                     unstash 'source'
-                    withSonarQubeEnv('sonarqube-9.1.0.47736') { 
+                    withSonarQubeEnv('SonarQubeScanner') { 
                         // sh "${"SonarQubeScanner"}/bin/sonar-scanner" 
                          // sh '''$scannerHome/bin/sonar-scanner 
                         //-Dsonar.host.url=http://54.193.191.66:9000 
