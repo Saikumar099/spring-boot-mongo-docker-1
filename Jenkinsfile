@@ -57,7 +57,8 @@ pipeline {
                     label 'node-1'
               }
               steps{
-                 nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-mongo', 
+                   unstash 'source'
+                   nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-mongo', 
                                        classifier: '', 
                                        file: 'target/spring-boot-mongo.war', 
                                        type: 'war']], 
