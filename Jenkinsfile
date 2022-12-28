@@ -70,7 +70,7 @@ pipeline {
                    version: '1.0'
                } 
            }
-           stage('creating tomcat image with webapp') {
+           stage('creating docker image') {
               agent {
                     label 'node-1'
               }
