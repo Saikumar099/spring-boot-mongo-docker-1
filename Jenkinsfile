@@ -48,7 +48,7 @@ pipeline {
                         //-Dsonar.projectKey=project-demo 
                         //-Dsonar.projectName=project-demo 
                         //-Dsonar.java.binaries=target/classes'''
-                       sh 'mvn clean install sonar:sonar -Dsonar.host.url=http://http://13.57.214.44:9000 -Dproject.settings=sonar-project.properties -Dsonar.projectKey=spring-app -Dsonar.projectName=spring-app'
+                       sh 'mvn clean install sonar:sonar -Dsonar.host.url=http://13.57.214.44:9000 -Dproject.settings=sonar-project.properties -Dsonar.projectKey=spring-app -Dsonar.projectName=spring-app'
                 }
              }
            }
