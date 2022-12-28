@@ -31,7 +31,7 @@ pipeline {
                      sh 'mvn package'
                 }
            }
-           stage('sonarqube report') {
+          /* stage('sonarqube report') {
                agent {
                     label 'node-1'
                }
@@ -51,7 +51,7 @@ pipeline {
                        sh 'mvn -X clean install sonar:sonar -Dsonar.host.url=http://13.57.214.44:9000 -Dproject.settings=sonar-project.properties -Dsonar.projectKey=spring-app -Dsonar.projectName=spring-app'
                     }
                 }
-            }
+            } */
             stage('upload artifacts to nexus') {
                agent {
                     label 'node-1'
