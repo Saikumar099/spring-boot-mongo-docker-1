@@ -67,7 +67,7 @@ pipeline {
                    nexusVersion: 'nexus3', 
                    protocol: 'http', 
                    repository: 'spring-app', 
-                   version: '1.0' || true
+                   version: '1.0'
                } 
            }
            stage('creating docker image') {
