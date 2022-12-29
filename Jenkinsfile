@@ -76,7 +76,7 @@ pipeline {
               }
                steps{
                     //unstash 'source'
-                    sh 'docker build -t saikumar099/spring-app:$IMAGE_TAG .'
+                    sh 'docker build -t saikumar099/spring-boot-app:$IMAGE_TAG .'
               }
            }
 	       stage('Logging into AWS ECR') {
