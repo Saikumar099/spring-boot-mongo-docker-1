@@ -98,7 +98,7 @@ pipeline {
 		       //sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y0r0a3j7'
 		      // sh “aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com”
 		       //sh 'docker build -t ecr-demo .'
-		       sh """docker tag saikumar/${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"""
+		       sh """docker tag saikumar099/${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"""
 		      // sh 'docker tag ecr-demo:latest public.ecr.aws/y0r0a3j7/ecr-demo:latest'
 		      // sh 'docker push public.ecr.aws/y0r0a3j7/ecr-demo:latest'
 			 sh """docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:$IMAGE_TAG"""
