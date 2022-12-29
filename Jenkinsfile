@@ -52,7 +52,7 @@ pipeline {
                     }
                 }
             }
-            stage('upload artifacts to nexus') {
+            /*stage('upload artifacts to nexus') {
                agent {
                     label 'node-1'
               }
@@ -69,7 +69,7 @@ pipeline {
                    repository: 'spring-app', 
                    version: '1.0'
                } 
-           }
+           }*/
            stage('creating docker image') {
               agent {
                     label 'node-1'
