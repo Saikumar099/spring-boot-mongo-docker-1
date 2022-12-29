@@ -3,7 +3,6 @@ pipeline {
       tools{
        git 'Git'
        maven 'maven3.8.6'
-       def BUILD_NUMBER
        //sonarqubescanner 'SonarQubeScanner'
       }
       environment {     
