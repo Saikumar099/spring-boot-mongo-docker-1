@@ -10,7 +10,8 @@ pipeline {
               AWS_ACCOUNT_ID="948406862378"
               AWS_DEFAULT_REGION="us-west-1"
               IMAGE_REPO_NAME="spring-boot-app"
-              IMAGE_TAG="BUILD_NUMBER"
+              //IMAGE_TAG="$BUILD_NUMBER"
+              BUILD_NUMBER="$(BUILD_NUMBER)"
               REPOSITORY_URI ="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
         } 
        stages{
@@ -98,10 +99,11 @@ pipeline {
 		       //sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y0r0a3j7'
 		      // sh “aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com”
 		       //sh 'docker build -t ecr-demo .'
-		       sh """docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"""
+		       //sh """docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"""
+               sh """docker tag ${IMAGE_REPO_NAME}:${BUILD_NUMBER} ${REPOSITORY_URI}:${BUILD_NUMBER}"""
 		      // sh 'docker tag ecr-demo:latest public.ecr.aws/y0r0a3j7/ecr-demo:latest'
 		      // sh 'docker push public.ecr.aws/y0r0a3j7/ecr-demo:latest'
-			 sh """docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}"""
+			 sh """docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${BUILD_NUMBER}"""
 			     }
 		     }
 	     }  	  
