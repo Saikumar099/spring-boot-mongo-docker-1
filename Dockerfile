@@ -10,4 +10,4 @@ COPY target/spring-boot-mongo-1.0.war $PROJECT_HOME/spring-boot-mongo.war
 
 WORKDIR $PROJECT_HOME
 EXPOSE 8080
-CMD ["java" ,"-jar","./spring-boot-mongo-1.0.war"]
+CMD ["java" ,"-jar","target/spring-boot-mongo-1.0.war"]
